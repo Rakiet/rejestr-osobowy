@@ -14,6 +14,10 @@
 		08BEAE1C28E0424A002F5FC5 /* rejestr_osobowy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08BEAE1A28E0424A002F5FC5 /* rejestr_osobowy.xcdatamodeld */; };
 		08BEAE1E28E0424B002F5FC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08BEAE1D28E0424B002F5FC5 /* Assets.xcassets */; };
 		08BEAE2128E0424B002F5FC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08BEAE1F28E0424B002F5FC5 /* LaunchScreen.storyboard */; };
+		08BEAE2928E065C0002F5FC5 /* PersonDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BEAE2828E065C0002F5FC5 /* PersonDataView.swift */; };
+		08DC39BD28E5833E003B5252 /* Extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC39BC28E5833E003B5252 /* Extansion.swift */; };
+		08DC39BF28E586C4003B5252 /* MessageAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC39BE28E586C4003B5252 /* MessageAlert.swift */; };
+		08DC39C128E589AC003B5252 /* DatabaseManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC39C028E589AC003B5252 /* DatabaseManagement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		08BEAE1D28E0424B002F5FC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08BEAE2028E0424B002F5FC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08BEAE2228E0424B002F5FC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08BEAE2828E065C0002F5FC5 /* PersonDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDataView.swift; sourceTree = "<group>"; };
+		08DC39BC28E5833E003B5252 /* Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extansion.swift; sourceTree = "<group>"; };
+		08DC39BE28E586C4003B5252 /* MessageAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAlert.swift; sourceTree = "<group>"; };
+		08DC39C028E589AC003B5252 /* DatabaseManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +69,11 @@
 				08BEAE1128E0424A002F5FC5 /* AppDelegate.swift */,
 				08BEAE1328E0424A002F5FC5 /* SceneDelegate.swift */,
 				08BEAE1528E0424A002F5FC5 /* ViewController.swift */,
+				08BEAE2828E065C0002F5FC5 /* PersonDataView.swift */,
 				08BEAE1728E0424A002F5FC5 /* Main.storyboard */,
+				08DC39BC28E5833E003B5252 /* Extansion.swift */,
+				08DC39BE28E586C4003B5252 /* MessageAlert.swift */,
+				08DC39C028E589AC003B5252 /* DatabaseManagement.swift */,
 				08BEAE1D28E0424B002F5FC5 /* Assets.xcassets */,
 				08BEAE1F28E0424B002F5FC5 /* LaunchScreen.storyboard */,
 				08BEAE2228E0424B002F5FC5 /* Info.plist */,
@@ -141,8 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08DC39BF28E586C4003B5252 /* MessageAlert.swift in Sources */,
 				08BEAE1C28E0424A002F5FC5 /* rejestr_osobowy.xcdatamodeld in Sources */,
+				08BEAE2928E065C0002F5FC5 /* PersonDataView.swift in Sources */,
 				08BEAE1628E0424A002F5FC5 /* ViewController.swift in Sources */,
+				08DC39BD28E5833E003B5252 /* Extansion.swift in Sources */,
+				08DC39C128E589AC003B5252 /* DatabaseManagement.swift in Sources */,
 				08BEAE1228E0424A002F5FC5 /* AppDelegate.swift in Sources */,
 				08BEAE1428E0424A002F5FC5 /* SceneDelegate.swift in Sources */,
 			);
