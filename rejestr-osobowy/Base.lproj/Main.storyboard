@@ -48,10 +48,10 @@
             </objects>
             <point key="canvasLocation" x="47.692307692307693" y="-2.1327014218009479"/>
         </scene>
-        <!--View Controller-->
+        <!--Person Data View-->
         <scene sceneID="Bwu-BO-Ui7">
             <objects>
-                <viewController id="Wni-mg-NcD" sceneMemberID="viewController">
+                <viewController id="Wni-mg-NcD" customClass="PersonDataView" customModule="rejestr_osobowy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lga-a2-QKM">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,6 +190,11 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kod pocztowy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7V-dH-4NV">
                                                 <rect key="frame" x="10" y="5" width="150" height="40"/>
@@ -216,6 +221,11 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -346,6 +356,15 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpV-wC-ba8">
+                                <rect key="frame" x="158" y="718" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="savePersonData:" destination="Wni-mg-NcD" eventType="touchUpInside" id="j2S-Ef-h5S"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="p50-NB-ORh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -353,9 +372,22 @@
                             <constraint firstItem="o6n-fm-3uO" firstAttribute="top" secondItem="p50-NB-ORh" secondAttribute="top" constant="20" id="JZp-8Y-FMI"/>
                             <constraint firstItem="o6n-fm-3uO" firstAttribute="leading" secondItem="p50-NB-ORh" secondAttribute="leading" id="XD6-Ri-Ye9"/>
                             <constraint firstItem="p50-NB-ORh" firstAttribute="trailing" secondItem="o6n-fm-3uO" secondAttribute="trailing" id="aUr-14-kyq"/>
+                            <constraint firstItem="p50-NB-ORh" firstAttribute="trailing" secondItem="tgt-zR-mov" secondAttribute="trailing" constant="10" id="iEq-WH-1mo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s79-Hy-Ik1"/>
+                    <connections>
+                        <outlet property="dateOfBirthPickerView" destination="FWC-8i-6jb" id="iis-Zi-rQL"/>
+                        <outlet property="lastNameTextField" destination="e2m-Xu-SeB" id="vKe-DM-ZZr"/>
+                        <outlet property="nameTextField" destination="fSK-UC-laP" id="cWn-6X-moF"/>
+                        <outlet property="numberApartmentTextField" destination="doA-kb-bGu" id="LRj-Ht-crI"/>
+                        <outlet property="numberHouseTextField" destination="1Zw-6Q-38h" id="vLX-K9-oJf"/>
+                        <outlet property="sexSegmentedControle" destination="qlw-lZ-PMC" id="Nsf-er-Yu3"/>
+                        <outlet property="streetTextField" destination="ZYS-P4-36K" id="3ry-rJ-uZ1"/>
+                        <outlet property="townTextField" destination="tgt-zR-mov" id="lJe-KB-Xfg"/>
+                        <outlet property="zipCodeFirstSegmentTextField" destination="wxr-9j-5Id" id="bBZ-MY-SgY"/>
+                        <outlet property="zipCodeSecondSegmentTextField" destination="zgO-ti-Cya" id="MnO-ee-L1d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Toq-Sk-AJz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
