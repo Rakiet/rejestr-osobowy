@@ -19,6 +19,45 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DnL-6N-Ii1">
                                 <rect key="frame" x="0.0" y="47" width="390" height="797"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="UvJ-3i-qpK" customClass="PersonViewCell" customModule="rejestr_osobowy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="390" height="34.333332061767578"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UvJ-3i-qpK" id="vuR-3F-1DR">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="34.333332061767578"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Uv-ve-MV6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="34.333333333333336"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eN-0T-XEk">
+                                                            <rect key="frame" x="10" y="4.9999999999999982" width="370" height="24.333333333333329"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="0eN-0T-XEk" firstAttribute="top" secondItem="2Uv-ve-MV6" secondAttribute="top" constant="5" id="8BI-BY-z8G"/>
+                                                        <constraint firstAttribute="bottom" secondItem="0eN-0T-XEk" secondAttribute="bottom" constant="5" id="I8x-Yy-Uul"/>
+                                                        <constraint firstItem="0eN-0T-XEk" firstAttribute="leading" secondItem="2Uv-ve-MV6" secondAttribute="leading" constant="10" id="lSx-UP-Ztw"/>
+                                                        <constraint firstAttribute="trailing" secondItem="0eN-0T-XEk" secondAttribute="trailing" constant="10" id="vmD-88-POT"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="2Uv-ve-MV6" secondAttribute="trailing" id="0xX-j3-oVN"/>
+                                                <constraint firstItem="2Uv-ve-MV6" firstAttribute="top" secondItem="vuR-3F-1DR" secondAttribute="top" id="I3q-HW-dg4"/>
+                                                <constraint firstAttribute="bottom" secondItem="2Uv-ve-MV6" secondAttribute="bottom" id="MSQ-EP-5bW"/>
+                                                <constraint firstItem="2Uv-ve-MV6" firstAttribute="leading" secondItem="vuR-3F-1DR" secondAttribute="leading" id="eXL-13-POh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="personText" destination="0eN-0T-XEk" id="6c3-G5-FFx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OkW-8t-rtQ">
                                 <rect key="frame" x="100" y="755" width="190" height="35"/>
@@ -27,7 +66,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Dodaj osobę"/>
                                 <connections>
-                                    <segue destination="Wni-mg-NcD" kind="show" id="D3C-5K-sD1"/>
+                                    <segue destination="Wni-mg-NcD" kind="show" identifier="segueToPersonData" id="D3C-5K-sD1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -43,6 +82,9 @@
                             <constraint firstAttribute="bottom" secondItem="DnL-6N-Ii1" secondAttribute="bottom" id="wbe-JU-GGm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="DnL-6N-Ii1" id="MQY-3I-Jfw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

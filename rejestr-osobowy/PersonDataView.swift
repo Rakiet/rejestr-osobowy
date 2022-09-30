@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SaveNewPersonProtocol{
+    func didSaveNewPerson(isSaved: Bool)
+}
+
 class PersonDataView: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -19,17 +23,10 @@ class PersonDataView: UIViewController {
     @IBOutlet weak var numberHouseTextField: UITextField!
     @IBOutlet weak var numberApartmentTextField: UITextField!
     
+    var saveNewPersonDelegaye: SaveNewPersonProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            let aaa =  try DatabaseManagement.readBase()
-            print(aaa)
-        } catch {
-            print("nie wczytano")
-        }
-        
-       
-        
     }
     
 
@@ -45,6 +42,8 @@ class PersonDataView: UIViewController {
             }
             do {
                 try DatabaseManagement.saveData(firstName: nameTextField.text, lastName: lastNameTextField.text, town: townTextField.text, street: streetTextField.text, zipCode: Int16(zipcode), houseNumber: numberHouseTextField.text, apartmentNumber: numberApartmentTextField.text, sex: sex, dateOfBirth: dateOfBirthPickerView.date)
+                self.saveNewPersonDelegaye.didSaveNewPerson(isSaved: true)
+                self.dismiss(animated: true)
             } catch {
                 print(error.localizedDescription)
             }
