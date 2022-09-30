@@ -11,9 +11,8 @@ import CoreData
 class DatabaseManagement: NSManagedObject {
     
     
-    class func saveData(firstName: String?, lastName: String?, town: String?, street: String?, zipCode: Int16?, houseNumber: String?, apartmentNumber: String?, sex: Bool?, dateOfBirth: Date?) throws {
+    class func saveData(firstName: String?, lastName: String?, town: String?, street: String?, zipCode: String?, houseNumber: String?, apartmentNumber: String?, sex: Bool?, dateOfBirth: Date?) throws {
         
-       
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Person", in: context)
@@ -33,7 +32,28 @@ class DatabaseManagement: NSManagedObject {
             print("saved")
         } catch{
             throw error
-            
+        }
+    }
+    
+    class func editData(data: NSManagedObject, firstName: String?, lastName: String?, town: String?, street: String?, zipCode: String?, houseNumber: String?, apartmentNumber: String?, sex: Bool?, dateOfBirth: Date?) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        data.setValue(firstName, forKey: "firstName")
+        data.setValue(lastName, forKey: "lastName")
+        data.setValue(town, forKey: "town")
+        data.setValue(street, forKey: "streetName")
+        data.setValue(zipCode, forKey: "zipCode")
+        data.setValue(houseNumber, forKey: "houseNumber")
+        data.setValue(apartmentNumber, forKey: "apartmentNumber")
+        data.setValue(sex, forKey: "sex")
+        data.setValue(dateOfBirth, forKey: "dateOfBirth")
+        
+        do{
+            try context.save()
+            print("saved")
+        } catch{
+            print("Nie edytowano")
         }
     }
     
@@ -56,10 +76,10 @@ class DatabaseManagement: NSManagedObject {
         context.delete(taskToDelete as NSManagedObject)
         
         do {
-          try context.save()
+            try context.save()
         } catch {
-           print("Error saving context \(error)")
+            print("Error saving context \(error)")
         }
-
-        }
+        
+    }
 }

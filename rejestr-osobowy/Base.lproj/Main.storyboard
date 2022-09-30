@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OXf-Ry-ms0">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Rejest-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="rejestr_osobowy" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DnL-6N-Ii1">
-                                <rect key="frame" x="0.0" y="47" width="390" height="797"/>
+                                <rect key="frame" x="0.0" y="91" width="390" height="753"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="UvJ-3i-qpK" customClass="PersonViewCell" customModule="rejestr_osobowy" customModuleProvider="target">
@@ -82,24 +82,26 @@
                             <constraint firstAttribute="bottom" secondItem="DnL-6N-Ii1" secondAttribute="bottom" id="wbe-JU-GGm"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Rejest" id="eEq-At-BWe"/>
                     <connections>
                         <outlet property="tableView" destination="DnL-6N-Ii1" id="MQY-3I-Jfw"/>
+                        <segue destination="Wni-mg-NcD" kind="show" identifier="segueToEditPersonData" id="s5n-tx-vf1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47.692307692307693" y="-2.1327014218009479"/>
+            <point key="canvasLocation" x="1906.1538461538462" y="-2.1327014218009479"/>
         </scene>
         <!--Person Data View-->
         <scene sceneID="Bwu-BO-Ui7">
             <objects>
                 <viewController id="Wni-mg-NcD" customClass="PersonDataView" customModule="rejestr_osobowy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lga-a2-QKM">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="o6n-fm-3uO">
-                                <rect key="frame" x="0.0" y="67" width="390" height="400"/>
+                                <rect key="frame" x="0.0" y="111" width="390" height="400"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCH-sa-TVw">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
@@ -398,11 +400,12 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpV-wC-ba8">
-                                <rect key="frame" x="158" y="718" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpV-wC-ba8">
+                                <rect key="frame" x="100" y="718.66666666666663" width="190" height="34.333333333333371"/>
+                                <color key="backgroundColor" red="0.22376130659999999" green="0.49703401930000002" blue="0.48306757239999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Zapisz"/>
                                 <connections>
                                     <action selector="savePersonData:" destination="Wni-mg-NcD" eventType="touchUpInside" id="j2S-Ef-h5S"/>
                                 </connections>
@@ -411,10 +414,13 @@
                         <viewLayoutGuide key="safeArea" id="p50-NB-ORh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="OpV-wC-ba8" firstAttribute="leading" secondItem="p50-NB-ORh" secondAttribute="leading" constant="100" id="42T-6H-8eS"/>
                             <constraint firstItem="o6n-fm-3uO" firstAttribute="top" secondItem="p50-NB-ORh" secondAttribute="top" constant="20" id="JZp-8Y-FMI"/>
                             <constraint firstItem="o6n-fm-3uO" firstAttribute="leading" secondItem="p50-NB-ORh" secondAttribute="leading" id="XD6-Ri-Ye9"/>
                             <constraint firstItem="p50-NB-ORh" firstAttribute="trailing" secondItem="o6n-fm-3uO" secondAttribute="trailing" id="aUr-14-kyq"/>
                             <constraint firstItem="p50-NB-ORh" firstAttribute="trailing" secondItem="tgt-zR-mov" secondAttribute="trailing" constant="10" id="iEq-WH-1mo"/>
+                            <constraint firstItem="p50-NB-ORh" firstAttribute="bottom" secondItem="OpV-wC-ba8" secondAttribute="bottom" constant="57" id="jTO-pi-F9v"/>
+                            <constraint firstItem="p50-NB-ORh" firstAttribute="trailing" secondItem="OpV-wC-ba8" secondAttribute="trailing" constant="100" id="v6W-3S-QCu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s79-Hy-Ik1"/>
@@ -433,9 +439,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Toq-Sk-AJz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="981.53846153846155" y="16.350710900473931"/>
+            <point key="canvasLocation" x="2840" y="16.350710900473931"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RWT-sa-8df">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OXf-Ry-ms0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HX5-4q-9XU">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iBx-wp-vln"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TKv-tB-jkY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="976.92307692307691" y="-2.1327014218009479"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="s5n-tx-vf1"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

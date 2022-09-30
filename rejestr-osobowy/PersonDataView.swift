@@ -25,14 +25,39 @@ class PersonDataView: UIViewController {
     
     var saveNewPersonDelegaye: SaveNewPersonProtocol!
     
+    var personIsEdit = false
+    var person: Person!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if personIsEdit{
+            loadTextToEdit()
+        }
+    }
+    
+    func loadTextToEdit() {
+        guard let person = person else { return }
+        nameTextField.text = person.firstName
+        lastNameTextField.text = person.lastName
+        dateOfBirthPickerView.date = person.dateOfBirth!
+        if person.sex {
+            sexSegmentedControle.selectedSegmentIndex = 0
+        } else {
+            sexSegmentedControle.selectedSegmentIndex = 1
+        }
+        let zipString: NSString = person.zipCode! as NSString
+        zipCodeFirstSegmentTextField.text = "\(zipString.substring(with: NSRange(location: 0, length: 2)))"
+        zipCodeSecondSegmentTextField.text = "\(zipString.substring(with: NSRange(location: 3, length: 3)))"
+        townTextField.text = person.town
+        streetTextField.text = person.streetName
+        numberHouseTextField.text = person.houseNumber
+        numberApartmentTextField.text = person.apartmentNumber
     }
     
 
     @IBAction func savePersonData(_ sender: Any) {
         if checkValidForm(){
-            let zipcode = "\(zipCodeFirstSegmentTextField.text!)\(zipCodeSecondSegmentTextField.text!)"
+            let zipcode = "\(zipCodeFirstSegmentTextField.text!)-\(zipCodeSecondSegmentTextField.text!)"
             var sex: Bool {
                 if sexSegmentedControle.selectedSegmentIndex == 0 {
                     return true
@@ -40,12 +65,23 @@ class PersonDataView: UIViewController {
                     return false
                 }
             }
-            do {
-                try DatabaseManagement.saveData(firstName: nameTextField.text, lastName: lastNameTextField.text, town: townTextField.text, street: streetTextField.text, zipCode: Int16(zipcode), houseNumber: numberHouseTextField.text, apartmentNumber: numberApartmentTextField.text, sex: sex, dateOfBirth: dateOfBirthPickerView.date)
+            
+            if personIsEdit{
+                
+                DatabaseManagement.editData(data: person, firstName: nameTextField.text, lastName: lastNameTextField.text, town: townTextField.text, street: streetTextField.text, zipCode: zipcode, houseNumber: numberHouseTextField.text, apartmentNumber: numberApartmentTextField.text, sex: sex, dateOfBirth: dateOfBirthPickerView.date)
                 self.saveNewPersonDelegaye.didSaveNewPerson(isSaved: true)
-                self.dismiss(animated: true)
-            } catch {
-                print(error.localizedDescription)
+                self.navigationController?.popToRootViewController(animated: true)
+                
+            } else {
+                
+                do {
+                    try DatabaseManagement.saveData(firstName: nameTextField.text, lastName: lastNameTextField.text, town: townTextField.text, street: streetTextField.text, zipCode: zipcode, houseNumber: numberHouseTextField.text, apartmentNumber: numberApartmentTextField.text, sex: sex, dateOfBirth: dateOfBirthPickerView.date)
+                    self.saveNewPersonDelegaye.didSaveNewPerson(isSaved: true)
+                    self.navigationController?.popToRootViewController(animated: true)
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
             }
         } else {
             print("valid is false")

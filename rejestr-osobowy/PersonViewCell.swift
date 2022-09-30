@@ -30,7 +30,7 @@ class PersonViewCell: UITableViewCell {
               let sex = person?.sex else { return }
         
         if apartmentNumber != "" {
-            apartmentNumber = "/\(apartmentNumber)"
+            apartmentNumber = " mieszkania: \(apartmentNumber)"
         }
         
         let yearOld = dateNow.get( .year) - date.get( .year) // rok rocznikowo
@@ -41,18 +41,8 @@ class PersonViewCell: UITableViewCell {
             sexName = "Kobieta"
         }
         
-        personText.text = "\(firstName) \(lastName)\n\(sexName) Lat: \(yearOld)\nul. \(streetName) \(houseNumber) \(apartmentNumber)\n\(zipCode) \(town)"
+        personText.text = "\(firstName) \(lastName)\n\(sexName) Lat: \(yearOld)\nul. \(streetName) \(houseNumber)\(apartmentNumber)\n\(zipCode) \(town)"
     }
-    
-//    func setDateTextField(dateTask: Date){
-//        if Calendar.current.isDate(dateTask, inSameDayAs: Date.now){
-//            dateTextLabel.textColor = UIColor.systemBlue
-//        } else if dateTask < Date.now{
-//            dateTextLabel.textColor = UIColor.red
-//        } else if dateTask > Date.now{
-//            dateTextLabel.textColor = UIColor.systemGreen
-//        }
-//    }
     
     func setStringFromDate(date: Date) -> String{
         let dateFormatter = DateFormatter()
@@ -61,14 +51,4 @@ class PersonViewCell: UITableViewCell {
         return dateFormatter.string(from: date)
     }
     
-}
-
-extension Date {
-    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
-        return calendar.dateComponents(Set(components), from: self)
-    }
-
-    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
-        return calendar.component(component, from: self)
-    }
 }
