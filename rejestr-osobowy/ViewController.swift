@@ -62,11 +62,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-    }
-    
     func loadDataFromDataBase(){
         do{
             personFromCoreData = try DatabaseManagement.readBase()
@@ -115,14 +110,25 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let contextDelete = UIContextualAction(style: .destructive, title: "Usuń") {  (contextualAction, view, boolValue) in
-            
-            DatabaseManagement.deleteData(taskToDelete: self.personFromCoreData[indexPath.row])
-            self.personFromCoreData.remove(at: indexPath.row)
-            self.tableView.beginUpdates()
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.tableView.endUpdates()
-            
-            self.taskDataBaseIsEmpty(reloadDataWhenTaskEntityIsNotEmpty: false)
+            if (self.searchController.isActive) {
+                
+                DatabaseManagement.deleteData(taskToDelete: self.filtredPerson[indexPath.row])
+                self.filtredPerson.remove(at: indexPath.row)
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.endUpdates()
+                
+                self.taskDataBaseIsEmpty(reloadDataWhenTaskEntityIsNotEmpty: false)
+                self.loadDataFromDataBase()
+            } else {
+                DatabaseManagement.deleteData(taskToDelete: self.personFromCoreData[indexPath.row])
+                self.personFromCoreData.remove(at: indexPath.row)
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.endUpdates()
+                
+                self.taskDataBaseIsEmpty(reloadDataWhenTaskEntityIsNotEmpty: false)
+            }
         }
         
         let contextEdit = UIContextualAction(style: .normal, title: "Edytuj") {  (contextualAction, view, boolValue) in
